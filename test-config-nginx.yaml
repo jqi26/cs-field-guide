@@ -21,16 +21,16 @@ spec:
         - containerPort: 80
         volumeMounts:
         - mountPath: /app/
-          name: nginx-claim0
+          name: nginx-app
         - mountPath: /app/node_modules
-          name: nginx-claim1
+          name: nginx-nodemodules
       volumes:
-      - name: nginx-claim0
-        persistentVolumeClaim:
-          claimName: nginx-claim0
-      - name: nginx-claim1
-        persistentVolumeClaim:
-          claimName: nginx-claim1
+      - name: nginx-app
+        hostPath:
+          path: /home/docker/cs-field-guide/csfieldguide
+      - name: nginx-nodemodules
+        hostPath:
+          path: /home/docker/cs-field-guide/csfieldguide/node_modules
 ---
 apiVersion: v1
 kind: Service
@@ -45,4 +45,3 @@ spec:
       targetPort: 9376
   type: NodePort
 ---
-  
