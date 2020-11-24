@@ -36,3 +36,16 @@
 #   resources:
 #     requests:
 #       storage: 100Mi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-claim0
+  labels:
+    claim: postgres-claim0
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi

@@ -2,10 +2,9 @@
 
 function postgres_ready(){
 /docker_venv/bin/python << END
-import sys
-import psycopg2
+import sys, psycopg2, os
 try:
-    conn = psycopg2.connect(dbname="postgres", user="postgres", host="postgres", port="5434")
+    conn = psycopg2.connect(dbname="kubernetes_django", user=os.getenv('POSTGRES_USER'), password=os.getenv('POSTGRES_PASSWORD'), host=os.getenv('POSTGRES_HOST'), port=os.getenv('POSTGRES_PORT', 5432))
 except psycopg2.OperationalError:
     sys.exit(-1)
 sys.exit(0)

@@ -15,7 +15,14 @@ from .base import *  # noqa: F403
 # ----------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-    "default": env.db("DATABASE_URL"),  # noqa: F405
+    "default": {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'kubernetes_django',
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('POSTGRES_HOST'),
+        'PORT': os.getenv('POSTGRES_PORT', 5432)
+        },  # noqa: F405 TODO is this noqa still needed?
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
