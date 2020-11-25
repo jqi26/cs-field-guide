@@ -79,3 +79,15 @@ spec:
       - name: fieldguide-project
         hostPath:
           path: /home/docker/cs-field-guide
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-service
+spec:
+  selector:
+    app: django
+  ports:
+    - protocol: TCP
+      port: 81
+      targetPort: 8080
