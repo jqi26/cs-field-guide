@@ -66,6 +66,8 @@ spec:
             value: config.settings.local
           - name: INCLUDE_INCONTEXT_L10N
             value: "False"
+          - name: PORT
+            value: "8080"
         volumeMounts:
         - mountPath: /cs-field-guide
           name: fieldguide-project
