@@ -6,6 +6,7 @@ The `urlpatterns` list routes URLs to views. For more information please see:
 
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.static import static
 from django.urls import include, path
 
 
@@ -15,7 +16,7 @@ urlpatterns = i18n_patterns(
     path("chapters/", include("chapters.urls", namespace="chapters")),
     path("curriculum-guides/", include("curriculum_guides.urls", namespace="curriculum_guides")),
     path("appendices/", include("appendices.urls", namespace="appendices")),
-)
+) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += [
     path("en/search/", include("search.urls", namespace="search")),
