@@ -3,12 +3,14 @@
 
 'use strict';
 
+const root = 'csfieldguide/';
+
 const js_files_skip_optimisation = [
   // Optimise all files
-  '**',
+  `${root}**`,
   // But skip the following files
-  '!static/interactives/huffman-tree/**/*.js',
-  '!static/interactives/pixel-viewer/**/*.js',
+  `!${root}static/interactives/huffman-tree/**/*.js`,
+  `!${root}static/interactives/pixel-viewer/**/*.js`,
 ];
 
 // general
@@ -76,52 +78,52 @@ var tasks = {
   // Delete build folder
   // --------------------------
   clean: function() {
-    return del(['build/']);
+    return del([`${root}build/`]);
   },
   // --------------------------
   // Copy static images
   // --------------------------
   images: function() {
-    return gulp.src('static/img/**/*')
-      .pipe(gulp.dest('build/img'));
+    return gulp.src(`${root}static/img/**/*`)
+      .pipe(gulp.dest(`${root}build/img`));
   },
   // --------------------------
   // Copy interactive files
   // --------------------------
   interactives: function() {
     return gulp.src([
-        'static/interactives/**/*',
-        '!static/interactives/**/*.scss',
-        '!static/interactives/**/*.js'
+        `${root}static/interactives/**/*`,
+        `!${root}static/interactives/**/*.scss`,
+        `!${root}static/interactives/**/*.js`
       ])
-      .pipe(gulp.dest('build/interactives'));
+      .pipe(gulp.dest(`${root}build/interactives`));
   },
   // --------------------------
   // Copy downloadable files
   // --------------------------
   files: function() {
-    return gulp.src('static/files/**/*')
-      .pipe(gulp.dest('build/files'));
+    return gulp.src(`${root}static/files/**/*`)
+      .pipe(gulp.dest(`${root}build/files`));
   },
   // --------------------------
   // Copy SVG files
   // --------------------------
   svg: function() {
-    return gulp.src('static/svg/**/*')
-      .pipe(gulp.dest('build/svg'));
+    return gulp.src(`${root}static/svg/**/*`)
+      .pipe(gulp.dest(`${root}build/svg`));
   },
   // --------------------------
   // CSS
   // --------------------------
   css: function() {
-    return gulp.src('static/css/**/*.css')
-      .pipe(gulp.dest('build/css'));
+    return gulp.src(`${root}static/css/**/*.css`)
+      .pipe(gulp.dest(`${root}build/css`));
   },
   // --------------------------
   // SASS (libsass)
   // --------------------------
   sass: function() {
-    return gulp.src('static/**/*.scss')
+    return gulp.src(`${root}static/**/*.scss`)
       .pipe(errorHandler(catchError))
       // sourcemaps + sass + error handling
       .pipe(gulpif(!production, sourcemaps.init()))
@@ -146,14 +148,14 @@ var tasks = {
       .pipe(rename(function (path) {
         path.dirname = path.dirname.replace("scss", "css");
       }))
-      .pipe(gulp.dest('build/'));
+      .pipe(gulp.dest(`${root}build/`));
   },
   // --------------------------
   // JavaScript
   // --------------------------
   js: function() {
     const f = filter(js_files_skip_optimisation, {restore: true});
-    return gulp.src(['static/**/*.js', '!static/js/modules/**/*.js'])
+    return gulp.src([`${root}static/**/*.js`, `!${root}static/js/modules/**/*.js`])
       .pipe(f)
       .pipe(errorHandler(catchError))
       .pipe(tap(function (file) {
@@ -165,7 +167,7 @@ var tasks = {
       .pipe(gulpif(production, terser({keep_fnames: true})))
       .pipe(gulpif(production, sourcemaps.write('./')))
       .pipe(f.restore)
-      .pipe(gulp.dest('build'));
+      .pipe(gulp.dest(`${root}build`));
   },
 };
 

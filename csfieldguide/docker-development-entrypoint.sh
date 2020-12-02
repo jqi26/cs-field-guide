@@ -21,6 +21,11 @@ done
 echo "Compiling message files"
 /docker_venv/bin/python3 ./manage.py compilemessages
 
+# Temporary migrations, content, and static collections
+/docker_venv/bin/python3 ./manage.py migrate
+/docker_venv/bin/python3 ./manage.py updatedata
+/docker_venv/bin/python3 ./manage.py collectstatic --no-input --clear
+
 # Start gunicorn service
 echo "Starting gunicorn"
 /docker_venv/bin/gunicorn -c ./gunicorn.conf.py -b :$PORT config.wsgi --reload

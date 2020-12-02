@@ -73,6 +73,15 @@ spec:
           name: fieldguide-project
         # - mountPath: /scripts
         #   name: configs
+      initContainers:
+      - name: gulp-build
+        image: danalambert/cs-field-guide_nginx
+        command: ["sh", "-c", "gulp build -f /app/csfieldguide/gulpfile.js"]
+        volumeMounts:
+        - mountPath: /app/csfieldguide
+          name: project-files
+        - mountPath: /app/csfieldguide/node_modules
+          name: node-modules
       volumes:
       # - name: configs
       #   configMap:
@@ -81,6 +90,12 @@ spec:
       - name: fieldguide-project
         hostPath:
           path: /home/docker/cs-field-guide
+      - name: project-files
+        hostPath:
+          path: /home/docker/cs-field-guide/csfieldguide
+      - name: node-modules
+        persistentVolumeClaim:
+          claimName: node-claim0
 ---
 apiVersion: v1
 kind: Service
