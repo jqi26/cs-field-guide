@@ -75,8 +75,8 @@ spec:
         #   name: configs
       initContainers:
       - name: gulp-build
-        image: danalambert/cs-field-guide_nginx
-        command: ["sh", "-c", "gulp build -f /app/csfieldguide/gulpfile.js"]
+        image: ealasdair/cs-field-guide_nginx
+        command: ["sh", "-c", "gulp build"]
         volumeMounts:
         - mountPath: /app/csfieldguide
           name: project-files

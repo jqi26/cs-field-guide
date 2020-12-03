@@ -3,7 +3,7 @@
 
 'use strict';
 
-const root = 'csfieldguide/';
+const root = '/app/csfieldguide/';
 
 const js_files_skip_optimisation = [
   // Optimise all files
