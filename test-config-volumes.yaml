@@ -1,61 +1,9 @@
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   labels:
-#     claim: django-claim0
-#   name: django-claim0
-# spec:
-#   accessModes:
-#   - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 100Mi
-# ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: nginx-claim0
-#   labels:
-#     claim: nginx-claim0
-# spec:
-#   accessModes:
-#   - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 100Mi
-# ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: nginx-claim1
-#   labels:
-#     claim: nginx-claim1
-# spec:
-#   accessModes:
-#   - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 100Mi
----
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: postgres-claim0
   labels:
     claim: postgres-claim0
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 100Mi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: node-claim0
-  labels:
-    claim: node-claim0
 spec:
   accessModes:
   - ReadWriteOnce
