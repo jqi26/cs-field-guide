@@ -62,7 +62,8 @@ ENV PYTHON=/usr/bin/python2.7
 WORKDIR /app
 RUN npm install --global gulp-cli node-gyp
 
-COPY ./csfieldguide/ /app/
+COPY ./csfieldguide/static/ /app/static/
+COPY ./csfieldguide/gulpfile.js /app/gulpfile.js
 RUN chmod 755 /app/
 RUN npm install
 RUN npm ls
