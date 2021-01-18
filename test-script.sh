@@ -1,6 +1,16 @@
 #!/bin/bash
 
-# Stage 1 must be done in advance
+# Remove all
+minikube delete --all
+
+# Stage 1: Ready minikube
+minikube start
+minikube ssh << END
+pwd
+mkdir cs-field-guide
+mkdir cs-field-guide/csfieldguide
+exit
+END
 
 # Stage 2: Provide project context
 docker-compose build
