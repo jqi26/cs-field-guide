@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
       - name: Create Docker network
         run: docker network create uccser-development-proxy
       - name: Start systems
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
       - name: Create Docker network
         run: docker network create uccser-development-proxy
       - name: Start systems
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
       - name: Run general tests
         run: ./dev ci test_general
 
@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
       - name: Run management tests
         run: ./dev ci test_management
 
@@ -66,7 +66,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
       - name: Run style tests
         run: ./dev ci style
 
@@ -75,7 +75,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
@@ -101,7 +101,7 @@ jobs:
     ]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
 
       - name: Create Docker network
         run: docker network create uccser-development-proxy
@@ -147,7 +147,7 @@ jobs:
     ]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
 
       - name: Create Docker network
         run: docker network create uccser-development-proxy
@@ -187,7 +187,7 @@ jobs:
     ]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
 
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
